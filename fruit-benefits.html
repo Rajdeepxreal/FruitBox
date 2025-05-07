@@ -15,13 +15,35 @@
     nav a:hover { text-decoration: underline; }
     .container { padding: 40px 20px; }
     .section-title { font-size: 2.5em; text-align: center; color: #ff6347; margin-bottom: 30px; }
-    .fruit-card { background: white; padding: 20px; margin: 20px 0; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; transition: transform 0.3s ease; }
+    .fruit-card {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease;
+      flex-wrap: wrap;
+    }
     .fruit-card:hover { transform: scale(1.05); }
-    .fruit-card img { width: 150px; height: 150px; object-fit: cover; border-radius: 10px; margin-right: 20px; }
+    .fruit-card img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-right: 20px;
+      flex-shrink: 0;
+    }
+    .fruit-card > div { flex: 1; min-width: 200px; }
     .fruit-card h3 { margin-top: 0; color: #ff6347; font-size: 1.8em; }
     .fruit-card p { font-size: 1.1em; color: #333; margin: 10px 0; }
     footer { background: #333; color: white; text-align: center; padding: 20px 0; margin-top: 50px; font-size: 1.1em; }
     footer p { margin: 0; }
+    @media (max-width: 600px) {
+      .fruit-card { flex-direction: column; text-align: center; }
+      .fruit-card img { margin: 0 auto 20px; }
+    }
   </style>
 </head>
 <body>
@@ -141,7 +163,7 @@
 
       <!-- Strawberry -->
       <div class="fruit-card">
-        <img src="https://via.placeholder.com/150?text=Strawberry" alt="Strawberry">
+        <img src="strawberry.jpg" alt="Strawberry">
         <div>
           <h3>Strawberry</h3>
           <p><strong>Vitamins:</strong> C, K, folate</p>
@@ -151,7 +173,7 @@
 
       <!-- Kiwi -->
       <div class="fruit-card">
-        <img src="https://via.placeholder.com/150?text=Kiwi" alt="Kiwi">
+        <img src="kiwi.jpg" alt="Kiwi">
         <div>
           <h3>Kiwi</h3>
           <p><strong>Vitamins:</strong> C, K, E</p>
@@ -161,7 +183,7 @@
 
       <!-- Blueberries -->
       <div class="fruit-card">
-        <img src="https://via.placeholder.com/150?text=Blueberries" alt="Blueberries">
+        <img src="blueberries.jpg" alt="Blueberries">
         <div>
           <h3>Blueberries</h3>
           <p><strong>Vitamins:</strong> C, K, fiber</p>
@@ -171,13 +193,14 @@
 
       <!-- Pear -->
       <div class="fruit-card">
-        <img src="https://via.placeholder.com/150?text=Pear" alt="Pear">
+        <img src="pear.jpg" alt="Pear">
         <div>
           <h3>Pear</h3>
           <p><strong>Vitamins:</strong> C, K, B2</p>
           <p><strong>Benefits:</strong> Good for digestion, promotes heart health, rich in fiber.</p>
         </div>
       </div>
+
     </section>
   </div>
 
