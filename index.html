@@ -5,14 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FruitBox Tezpur - Fresh Fruit Subscription</title>
   <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background: #f9f9f9; }
-    header { background: #ff6347; color: white; padding: 20px 0; text-align: center; }
-    nav { background: #333; color: white; text-align: center; padding: 10px 0; }
-    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-    .container { padding: 20px; }
-    .fruit-card { background: white; padding: 15px; margin: 10px 0; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
-    .fruit-card h3 { margin-top: 0; color: #ff6347; }
-    footer { background: #333; color: white; text-align: center; padding: 15px 0; margin-top: 30px; }
+    body { font-family: 'Arial', sans-serif; line-height: 1.6; margin: 0; padding: 0; background: #f9f9f9; }
+    header { background: linear-gradient(to right, #ff6347, #ff8c00); color: white; padding: 40px 0; text-align: center; }
+    header h1 { font-size: 3em; }
+    header p { font-size: 1.2em; margin-top: 10px; }
+    nav { background: #333; color: white; text-align: center; padding: 12px 0; }
+    nav a { color: white; margin: 0 20px; text-decoration: none; font-weight: bold; font-size: 1.1em; }
+    nav a:hover { text-decoration: underline; }
+    .container { padding: 40px 20px; }
+    .section-title { font-size: 2em; text-align: center; color: #333; margin-bottom: 20px; }
+    .fruit-card { background: white; padding: 20px; margin: 20px 0; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); display: flex; align-items: center; }
+    .fruit-card img { width: 150px; height: 150px; object-fit: cover; border-radius: 10px; margin-right: 20px; }
+    .fruit-card h3 { margin-top: 0; color: #ff6347; font-size: 1.8em; }
+    .fruit-card p { font-size: 1.1em; color: #333; margin: 10px 0; }
+    footer { background: #333; color: white; text-align: center; padding: 20px 0; margin-top: 50px; font-size: 1.1em; }
+    footer p { margin: 0; }
+    .cta-button { display: inline-block; background: #ff6347; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-size: 1.2em; margin-top: 20px; }
+    .cta-button:hover { background: #ff8c00; }
+    .cta-container { text-align: center; margin-top: 40px; }
+    .fruit-card:hover { transform: translateY(-5px); transition: transform 0.3s ease-in-out; }
   </style>
 </head>
 <body>
@@ -23,87 +34,23 @@
 
   <nav>
     <a href="#plans">Plans</a>
-    <a href="#fruits">Fruit Benefits</a>
+    <a href="fruit-benefits.html">Fruit Benefits</a> <!-- Redirects to the new page -->
     <a href="#contact">Order Now</a>
   </nav>
 
   <div class="container">
     <section id="plans">
-      <h2>Our Subscription Plans</h2>
-      <ul>
+      <h2 class="section-title">Our Subscription Plans</h2>
+      <ul style="list-style-type: none; text-align: center;">
         <li><strong>Daily Box:</strong> ₹40/day – 2–3 seasonal fruits</li>
         <li><strong>Weekly Box:</strong> ₹250/week – 6 deliveries</li>
         <li><strong>Monthly Box:</strong> ₹950/month – 26+ deliveries</li>
       </ul>
     </section>
 
-    <section id="fruits">
-      <h2>Fruits & Health Benefits</h2>
-
-      <div class="fruit-card">
-        <h3>Apple</h3>
-        <p><strong>Vitamins:</strong> C, B6, K</p>
-        <p><strong>Benefits:</strong> Supports heart health, aids digestion, rich in fiber and antioxidants.</p>
-      </div>
-
-      <div class="fruit-card">
-        <h3>Banana</h3>
-        <p><strong>Vitamins:</strong> B6, C, potassium</p>
-        <p><strong>Benefits:</strong> Energy booster, aids muscle function, good for digestion.</p>
-      </div>
-
-      <div class="fruit-card">
-        <h3>Orange</h3>
-        <p><strong>Vitamins:</strong> C, B1, folate</p>
-        <p><strong>Benefits:</strong> Boosts immunity, improves skin health, helps iron absorption.</p>
-      </div>
-
-      <div class="fruit-card">
-        <h3>Papaya</h3>
-        <p><strong>Vitamins:</strong> A, C, E, folate</p>
-        <p><strong>Benefits:</strong> Good for skin, digestion, and eye health. Contains antioxidants.</p>
-      </div>
-
-      <div class="fruit-card">
-        <h3>Guava</h3>
-        <p><strong>Vitamins:</strong> C, A, fiber</p>
-        <p><strong>Benefits:</strong> Improves immunity, supports weight loss, lowers blood sugar.</p>
-      </div>
-
-      <div class="fruit-card">
-        <h3>Pomegranate</h3>
-        <p><strong>Vitamins:</strong> C, K, folate</p>
-        <p><strong>Benefits:</strong> Anti-inflammatory, good for heart and blood pressure.</p>
-      </div>
-
-      <div class="fruit-card">
-        <h3>Watermelon</h3>
-        <p><strong>Vitamins:</strong> A, C, B6</p>
-        <p><strong>Benefits:</strong> Hydrating, supports skin and eye health, good for recovery after workouts.</p>
-      </div>
-
-      <div class="fruit-card">
-        <h3>Grapes</h3>
-        <p><strong>Vitamins:</strong> C, K, antioxidants (resveratrol)</p>
-        <p><strong>Benefits:</strong> Good for heart health, reduces inflammation, supports brain function.</p>
-      </div>
-
-      <div class="fruit-card">
-        <h3>Mango</h3>
-        <p><strong>Vitamins:</strong> A, C, E</p>
-        <p><strong>Benefits:</strong> Boosts immunity, improves skin and digestion, rich in antioxidants.</p>
-      </div>
-
-      <div class="fruit-card">
-        <h3>Pineapple</h3>
-        <p><strong>Vitamins:</strong> C, B6, manganese</p>
-        <p><strong>Benefits:</strong> Aids digestion, reduces inflammation, supports immune system.</p>
-      </div>
-    </section>
-
     <section id="contact">
-      <h2>Order Now</h2>
-      <p>📞 Call or WhatsApp us at <strong>+91 9395345418</strong></p>
+      <h2 class="section-title">Order Now</h2>
+      <p>📞 Call or WhatsApp us at <strong>+91 98765XXXXX</strong></p>
       <p>📝 Or fill our <a href="https://forms.gle/your-google-form-link" target="_blank">Google Form</a> to start your subscription.</p>
     </section>
   </div>
