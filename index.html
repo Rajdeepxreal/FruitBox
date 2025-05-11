@@ -9,12 +9,12 @@
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background: #f5f5e5; /* Creamy white */
+      background: #f5f5e5;
       color: #333;
     }
 
     header {
-      background: linear-gradient(to right, #004d00, #006400); /* Darkest green */
+      background: linear-gradient(to right, #004d00, #006400);
       color: white;
       padding: 40px 20px 20px;
       text-align: center;
@@ -39,40 +39,45 @@
       display: block;
       margin-top: 20px;
       border-radius: 0 0 10px 10px;
-      border-bottom: 5px solid #004d00; /* Dark green */
+      border-bottom: 5px solid #004d00;
     }
 
     nav {
-      background: #003300; /* Dark green */
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      background: #003300;
       padding: 12px 20px;
+      display: flex;
+      justify-content: center;
     }
 
-    .nav-left a,
-    .nav-right a {
+    .nav-container {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-container a {
       color: white;
       text-decoration: none;
       font-weight: bold;
       font-size: 1.1em;
-      margin: 0 10px;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
     }
 
-    .nav-left a:hover,
-    .nav-right a:hover {
-      text-decoration: underline;
+    .nav-container a:hover {
+      background-color: #004d00;
+      transform: scale(1.05);
     }
 
     .cta-nav {
-      background: #66bb6a; /* Lighter green */
-      padding: 8px 14px;
-      border-radius: 6px;
-      transition: background 0.3s ease;
+      background: #66bb6a;
+      color: white;
     }
 
     .cta-nav:hover {
-      background: #388e3c; /* Darker green */
+      background: #388e3c;
     }
 
     .container {
@@ -82,7 +87,7 @@
     .section-title {
       font-size: 2em;
       text-align: center;
-      color: #004d00; /* Dark green */
+      color: #004d00;
       margin-bottom: 30px;
     }
 
@@ -102,12 +107,12 @@
     }
 
     section#contact a {
-      color: #66bb6a; /* Lighter green */
+      color: #66bb6a;
       font-weight: bold;
     }
 
     footer {
-      background: #003300; /* Dark green */
+      background: #003300;
       color: white;
       text-align: center;
       padding: 20px 0;
@@ -119,14 +124,8 @@
       margin: 0;
     }
 
-    /* Hover and button animation */
-    .cta-nav:hover {
-      transform: scale(1.1);
-    }
-
-    /* Content sections */
     .why-choose-us, .fruit-benefits, .our-values {
-      background: #e8f5e9; /* Light green */
+      background: #e8f5e9;
       padding: 40px 20px;
       margin: 30px 0;
       border-radius: 10px;
@@ -152,18 +151,6 @@
       margin-right: 10px;
     }
   </style>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const ctaButton = document.querySelector('.cta-nav');
-      ctaButton.addEventListener('mouseover', () => {
-        ctaButton.style.transform = 'scale(1.1)';
-      });
-      ctaButton.addEventListener('mouseout', () => {
-        ctaButton.style.transform = 'scale(1)';
-      });
-    });
-  </script>
 </head>
 <body>
 
@@ -176,12 +163,10 @@
   </header>
 
   <nav>
-    <div class="nav-left">
+    <div class="nav-container">
       <a href="#plans">Plans</a>
       <a href="fruit-benefits.html">Fruit Benefits</a>
-    </div>
-    <div class="nav-right">
-      <a href="plans.html" class="cta-nav">Explore Our Plans</a> <!-- Link to plans.html -->
+      <a href="plans.html" class="cta-nav">Explore Our Plans</a>
     </div>
   </nav>
 
@@ -242,3 +227,4 @@
 
 </body>
 </html>
+
