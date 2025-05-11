@@ -1,32 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Fruit Benefits - FruitBox Tezpur</title>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
-    body { font-family: 'Quicksand', sans-serif; background: #fffaf0; margin: 0; padding: 0; }
-    header { background: linear-gradient(to right, #ff6349, #ff8c70); color: white; padding: 40px 0; text-align: center; }
-    header h1 { font-size: 3.5em; margin: 0; }
-    header p { font-size: 1.2em; margin-top: 10px; }
-    nav { background: #333; color: white; text-align: center; padding: 12px 0; }
-    nav a { color: white; margin: 0 20px; text-decoration: none; font-weight: bold; font-size: 1.1em; }
-    nav a:hover { text-decoration: underline; }
-    .container { padding: 40px 20px; }
-    .section-title { font-size: 2.5em; text-align: center; color: #ff6347; margin-bottom: 30px; }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: #fffaf0;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+
+    header {
+      background: linear-gradient(to right, #004d00, #006600);
+      color: #fff;
+      padding: 50px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3.2em;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.3em;
+      margin-top: 10px;
+    }
+
+    nav {
+      background: #003300;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #99ff99;
+    }
+
+    .container {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      font-size: 2.8em;
+      text-align: center;
+      color: #004d00;
+      margin-bottom: 40px;
+    }
+
     .fruit-card {
-      background: white;
+      background: #ffffff;
       padding: 20px;
       margin: 20px 0;
       border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
       display: flex;
       align-items: center;
       transition: transform 0.3s ease;
       flex-wrap: wrap;
     }
-    .fruit-card:hover { transform: scale(1.05); }
+
+    .fruit-card:hover {
+      transform: scale(1.03);
+    }
+
     .fruit-card img {
       width: 160px;
       height: 160px;
@@ -35,14 +88,46 @@
       margin-right: 20px;
       flex-shrink: 0;
     }
-    .fruit-card > div { flex: 1; min-width: 200px; }
-    .fruit-card h3 { margin-top: 0; color: #ff6347; font-size: 1.8em; }
-    .fruit-card p { font-size: 1.1em; color: #333; margin: 10px 0; }
-    footer { background: #333; color: white; text-align: center; padding: 20px 0; margin-top: 50px; font-size: 1.1em; }
-    footer p { margin: 0; }
+
+    .fruit-card > div {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .fruit-card h3 {
+      margin-top: 0;
+      color: #006600;
+      font-size: 1.8em;
+    }
+
+    .fruit-card p {
+      font-size: 1.05em;
+      color: #444;
+      margin: 8px 0;
+    }
+
+    footer {
+      background: #003300;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 50px;
+      font-size: 1.1em;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
     @media (max-width: 600px) {
-      .fruit-card { flex-direction: column; text-align: center; }
-      .fruit-card img { margin: 0 auto 20px; }
+      .fruit-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .fruit-card img {
+        margin: 0 auto 20px;
+      }
     }
   </style>
 </head>
@@ -61,6 +146,8 @@
     <section id="fruits">
       <h2 class="section-title">Fruits & Health Benefits</h2>
 
+      <!-- All 14 fruits -->
+
       <!-- Apple -->
       <div class="fruit-card">
         <img src="apple.jpg" alt="Apple">
@@ -76,7 +163,7 @@
         <img src="banana.jpg" alt="Banana">
         <div>
           <h3>Banana</h3>
-          <p><strong>Vitamins:</strong> B6, C, potassium</p>
+          <p><strong>Vitamins:</strong> B6, C, Potassium</p>
           <p><strong>Benefits:</strong> Energy booster, aids muscle function, good for digestion.</p>
         </div>
       </div>
@@ -86,7 +173,7 @@
         <img src="orange.jpg" alt="Orange">
         <div>
           <h3>Orange</h3>
-          <p><strong>Vitamins:</strong> C, B1, folate</p>
+          <p><strong>Vitamins:</strong> C, B1, Folate</p>
           <p><strong>Benefits:</strong> Boosts immunity, improves skin health, helps iron absorption.</p>
         </div>
       </div>
@@ -96,7 +183,7 @@
         <img src="papaya.jpg" alt="Papaya">
         <div>
           <h3>Papaya</h3>
-          <p><strong>Vitamins:</strong> A, C, E, folate</p>
+          <p><strong>Vitamins:</strong> A, C, E, Folate</p>
           <p><strong>Benefits:</strong> Good for skin, digestion, and eye health. Contains antioxidants.</p>
         </div>
       </div>
@@ -106,7 +193,7 @@
         <img src="guava.jpg" alt="Guava">
         <div>
           <h3>Guava</h3>
-          <p><strong>Vitamins:</strong> C, A, fiber</p>
+          <p><strong>Vitamins:</strong> C, A, Fiber</p>
           <p><strong>Benefits:</strong> Improves immunity, supports weight loss, lowers blood sugar.</p>
         </div>
       </div>
@@ -116,7 +203,7 @@
         <img src="pomegranate.jpg" alt="Pomegranate">
         <div>
           <h3>Pomegranate</h3>
-          <p><strong>Vitamins:</strong> C, K, folate</p>
+          <p><strong>Vitamins:</strong> C, K, Folate</p>
           <p><strong>Benefits:</strong> Anti-inflammatory, good for heart and blood pressure.</p>
         </div>
       </div>
@@ -136,7 +223,7 @@
         <img src="grapes.jpg" alt="Grapes">
         <div>
           <h3>Grapes</h3>
-          <p><strong>Vitamins:</strong> C, K, antioxidants (resveratrol)</p>
+          <p><strong>Vitamins:</strong> C, K, Antioxidants (Resveratrol)</p>
           <p><strong>Benefits:</strong> Good for heart health, reduces inflammation, supports brain function.</p>
         </div>
       </div>
@@ -156,7 +243,7 @@
         <img src="pineapple.jpg" alt="Pineapple">
         <div>
           <h3>Pineapple</h3>
-          <p><strong>Vitamins:</strong> C, B6, manganese</p>
+          <p><strong>Vitamins:</strong> C, B6, Manganese</p>
           <p><strong>Benefits:</strong> Aids digestion, reduces inflammation, supports immune system.</p>
         </div>
       </div>
@@ -166,7 +253,7 @@
         <img src="strawberry.jpg" alt="Strawberry">
         <div>
           <h3>Strawberry</h3>
-          <p><strong>Vitamins:</strong> C, K, folate</p>
+          <p><strong>Vitamins:</strong> C, K, Folate</p>
           <p><strong>Benefits:</strong> Rich in antioxidants, improves heart health, boosts immunity.</p>
         </div>
       </div>
@@ -186,7 +273,7 @@
         <img src="blueberries.jpg" alt="Blueberries">
         <div>
           <h3>Blueberries</h3>
-          <p><strong>Vitamins:</strong> C, K, fiber</p>
+          <p><strong>Vitamins:</strong> C, K, Fiber</p>
           <p><strong>Benefits:</strong> Antioxidant-rich, improves brain function, supports heart health.</p>
         </div>
       </div>
@@ -205,7 +292,8 @@
   </div>
 
   <footer>
-    -@Rajdeep Borkakati
+    <p>© 2025 FruitBox Tezpur | Designed by Rajdeep Borkakati</p>
   </footer>
 </body>
 </html>
+
