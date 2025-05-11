@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FruitBox Tezpur - Customize Your Fruit Salad</title>
+  <style>
+    /* Same CSS from previous, no changes needed */
+    body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background: #f5f5e5; color: #333; }
+    header { background: linear-gradient(to right, #004d00, #006400); color: white; padding: 40px 20px 20px; text-align: center; }
+    nav { background: #003300; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; }
+    .nav-left a, .nav-right a { color: white; text-decoration: none; font-weight: bold; font-size: 1.1em; margin: 0 10px; }
+    .nav-left a:hover, .nav-right a:hover { text-decoration: underline; }
+    .cta-nav { background: #66bb6a; padding: 8px 14px; border-radius: 6px; transition: background 0.3s ease; }
+    .cta-nav:hover { background: #388e3c; }
+    .container { padding: 40px 20px; }
+    .section-title { font-size: 2em; text-align: center; color: #004d00; margin-bottom: 30px; }
+    .fruit-selection { display: flex; justify-content: space-between; margin-bottom: 20px; }
+    .fruit-selection label { margin-right: 10px; font-size: 1.1em; }
+    .fruit-selection select { padding: 8px; font-size: 1em; }
+    .price { font-size: 1.1em; color: #004d00; }
+    .order-form { text-align: center; margin-top: 30px; }
+    .plan-option { background: #e0f7e6; padding: 20px; margin: 20px 0; border-radius: 8px; border: 1px solid #66bb6a; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center; }
+    .plan-option h3 { color: #004d00; }
+    .plan-option p { font-size: 1.2em; color: #388e3c; }
+    .family-plans { background: #c8e6c9; border: 1px solid #388e3c; margin-top: 30px; }
+    footer { background: #003300; color: white; text-align: center; padding: 20px 0; margin-top: 50px; font-size: 1.1em; }
+    footer p { margin: 0; }
+    .plan-button { background: #388e3c; padding: 12px 24px; color: white; border: none; font-size: 1.1em; margin-top: 10px; cursor: pointer; border-radius: 6px; transition: background 0.3s ease; }
+    .plan-button:hover { background: #66bb6a; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Customize Your Fruit Box</h1>
+    <p>Fresh, Healthy, and Tailored Just For You</p>
+  </header>
+
+  <nav>
+    <div class="nav-left">
+      <a href="index.html">Home</a>
+      <a href="fruit-benefits.html">Fruit Benefits</a>
+    </div>
+    <div class="nav-right">
+      <a href="order.html" class="cta-nav">Go to Order</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Section for Basic and Family Plans -->
+    <section id="plans">
+      <h2 class="section-title">Our Subscription Plans</h2>
+
+      <!-- Basic Plans -->
+      <div class="plan-option">
+        <h3>🍎 Basic Plan</h3>
+        <p>₹60/day – 2–3 seasonal fruits of your choice</p>
+        <p>Base: Mixed Fruits</p>
+        <button class="plan-button" onclick="location.href='plans.html'">Customize Salad</button>
+      </div>
+
+      <div class="plan-option">
+        <h3>🍌 Weekly Plan</h3>
+        <p>₹300/week – 6 deliveries</p>
+        <p>Base: Mixed Fruits + Seasonal Add-ons</p>
+        <button class="plan-button" onclick="location.href='plans.html'">Customize Salad</button>
+      </div>
+
+      <div class="plan-option">
+        <h3>🍇 Monthly Plan</h3>
+        <p>₹1000/month – 24+ deliveries</p>
+        <p>Base: Mixed Fruits + Customizable Options</p>
+        <button class="plan-button" onclick="location.href='plans.html'">Customize Salad</button>
+      </div>
+
+      <!-- Family Plans Section -->
+      <div class="family-plans">
+        <h2 class="section-title">Family Plans</h2>
+
+        <div class="plan-option">
+          <h3>🍏 Family Plan (2-3 Members)</h3>
+          <p>₹150/day – 5-6 seasonal fruits</p>
+          <button class="plan-button" onclick="location.href='plans.html'">Customize Salad</button>
+        </div>
+
+        <div class="plan-option">
+          <h3>🍊 Family Plan (4-5 Members)</h3>
+          <p>₹300/day – 10-12 seasonal fruits</p>
+          <button class="plan-button" onclick="location.href='plans.html'">Customize Salad</button>
+        </div>
+
+        <div class="plan-option">
+          <h3>🍉 Large Family Plan (6+ Members)</h3>
+          <p>₹500/day – 15+ seasonal fruits</p>
+          <button class="plan-button" onclick="location.href='plans.html'">Customize Salad</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section for Fruit Salad Customization -->
+    <section id="fruit-salad">
+      <h2 class="section-title">Customize Your Fruit Salad</h2>
+
+      <!-- Base Fruit Salad -->
+      <div class="fruit-selection">
+        <label for="base-fruit">Base Fruit Salad (₹60):</label>
+        <select id="base-fruit" disabled>
+          <option value="mixed-fruits">Mixed Fruit (Base)</option>
+        </select>
+        <span class="price">₹60</span>
+      </div>
+
+      <!-- Add Additional Fruits -->
+      <h3>Choose Additional Fruits</h3>
+      <div class="fruit-selection">
+        <label for="apple">Apple (₹20):</label>
+        <input type="checkbox" id="apple" value="20">
+      </div>
+      <div class="fruit-selection">
+        <label for="banana">Banana (₹15):</label>
+        <input type="checkbox" id="banana" value="15">
+      </div>
+      <div class="fruit-selection">
+        <label for="grapes">Grapes (₹25):</label>
+        <input type="checkbox" id="grapes" value="25">
+      </div>
+      <div class="fruit-selection">
+        <label for="mango">Mango (₹30):</label>
+        <input type="checkbox" id="mango" value="30">
+      </div>
+
+      <!-- Order Summary -->
+      <div class="order-form">
+        <button id="add-to-order" class="cta-nav">Add to Order</button>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 FruitBox Tezpur. Eat Fresh. Live Well.</p>
+  </footer>
+
+  <script>
+    document.getElementById('add-to-order').addEventListener('click', function() {
+      const basePrice = 60;
+      let additionalPrice = 0;
+      let selectedFruits = [];
+
+      // Check selected fruits and add the price
+      if (document.getElementById('apple').checked) {
+        additionalPrice += 20;
+        selectedFruits.push("Apple");
+      }
+      if (document.getElementById('banana').checked) {
+        additionalPrice += 15;
+        selectedFruits.push("Banana");
+      }
+      if (document.getElementById('grapes').checked) {
+        additionalPrice += 25;
+        selectedFruits.push("Grapes");
+      }
+      if (document.getElementById('mango').checked) {
+        additionalPrice += 30;
+        selectedFruits.push("Mango");
+      }
+
+      const totalPrice = basePrice + additionalPrice;
+
+      // Create the query string for the redirection
+      const queryString = `?fruits=${encodeURIComponent(selectedFruits.join(", "))}&price=${totalPrice}`;
+
+      // Redirect to order page with query parameters
+      window.location.href = `order.html${queryString}`;
+    });
+  </script>
+
+</body>
+</html>
