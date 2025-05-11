@@ -5,85 +5,97 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FruitBox Plans</title>
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: 'Segoe UI', sans-serif;
-      background: #fffaf0;
+      background-color: #fffaf0;
       color: #2f4f2f;
+      line-height: 1.6;
     }
 
     header {
-      background: #2f4f2f;
+      background-color: #2f4f2f;
       color: #fff;
-      padding: 50px 20px;
+      padding: 60px 20px;
       text-align: center;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     }
 
     header h1 {
-      font-size: 2.8rem;
+      font-size: 3rem;
       margin-bottom: 10px;
-      animation: fadeIn 1s ease-in-out;
+      animation: fadeIn 1.5s ease-in-out;
     }
 
     header p {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
+      margin-top: 10px;
     }
 
     .container {
-      padding: 40px 20px;
+      padding: 50px 20px;
       max-width: 1200px;
       margin: auto;
     }
 
     .plans-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 30px;
     }
 
     .plan-card {
-      background: #fff;
+      background-color: #fff;
       border-radius: 15px;
-      padding: 30px 20px;
+      padding: 30px;
       text-align: center;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
       cursor: pointer;
+      overflow: hidden;
     }
 
     .plan-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      transform: translateY(-10px);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
     }
 
     .plan-title {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
+      font-size: 2rem;
       color: #2f4f2f;
+      margin-bottom: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .plan-card:hover .plan-title {
+      color: #4caf50;
     }
 
     .plan-price {
-      font-size: 1.4rem;
-      margin-bottom: 20px;
+      font-size: 1.5rem;
       color: #4caf50;
+      margin-bottom: 20px;
+      font-weight: bold;
     }
 
     .plan-features {
       list-style: none;
       padding: 0;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 20px;
     }
 
     .plan-features li {
       margin: 10px 0;
     }
 
-    .highlight {
-      border: 3px solid #4caf50;
-    }
-
     .cta-button {
-      margin-top: 25px;
       padding: 12px 20px;
       font-size: 1rem;
       background-color: #2f4f2f;
@@ -91,28 +103,52 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
     }
 
     .cta-button:hover {
       background-color: #1e341e;
     }
 
-    @media (max-width: 600px) {
-      header h1 { font-size: 2rem; }
-      .plan-title { font-size: 1.5rem; }
-      .plan-price { font-size: 1.2rem; }
+    .highlight {
+      border: 3px solid #4caf50;
+    }
+
+    .family-plan-price {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      .plan-title {
+        font-size: 1.7rem;
+      }
+
+      .plan-price {
+        font-size: 1.2rem;
+      }
+
+      .plan-card {
+        padding: 20px;
+      }
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Our Plans</h1>
-    <p>Choose the perfect fruit plan for your lifestyle</p>
+    <h1>Our FruitBox Plans</h1>
+    <p>Choose the perfect fruit plan that suits your needs!</p>
   </header>
 
   <div class="container">
@@ -126,7 +162,7 @@
           <li>Custom shake option</li>
           <li>Free doorstep delivery</li>
         </ul>
-        <button class="cta-button" onclick="orderRedirect('Daily Plan', 49)">Order Now</button>
+        <a href="order.html?plan=Daily%20Plan&price=49" class="cta-button">Order Now</a>
       </div>
 
       <div class="plan-card highlight" onclick="highlight(this)">
@@ -138,7 +174,7 @@
           <li>Flexible delivery time</li>
           <li>Save ₹44!</li>
         </ul>
-        <button class="cta-button" onclick="orderRedirect('Weekly Plan', 299)">Order Now</button>
+        <a href="order.html?plan=Weekly%20Plan&price=299" class="cta-button">Order Now</a>
       </div>
 
       <div class="plan-card" onclick="highlight(this)">
@@ -150,10 +186,9 @@
           <li>Priority delivery</li>
           <li>Save ₹271!</li>
         </ul>
-        <button class="cta-button" onclick="orderRedirect('Monthly Plan', 1199)">Order Now</button>
+        <a href="order.html?plan=Monthly%20Plan&price=1199" class="cta-button">Order Now</a>
       </div>
 
-      <!-- Family Plan -->
       <div class="plan-card" onclick="highlight(this)">
         <h2 class="plan-title">Family Plan</h2>
         <p class="plan-price" id="family-price">₹999/month</p>
@@ -164,8 +199,8 @@
         </ul>
         <label for="members">Select Number of Members:</label>
         <input type="number" id="members" name="members" min="1" value="1" onchange="updateFamilyPrice()">
-        <p id="member-price-info">Price: ₹999 for 1 member</p>
-        <button class="cta-button" onclick="orderRedirect('Family Plan', 999)">Order Now</button>
+        <p id="member-price-info" class="family-plan-price">Price: ₹999 for 1 member</p>
+        <a href="order.html?plan=Family%20Plan&price=999&members=1" class="cta-button" id="family-btn">Order Now</a>
       </div>
 
     </div>
@@ -173,27 +208,28 @@
 
   <script>
     function highlight(card) {
-      // Remove highlight from all
       document.querySelectorAll('.plan-card').forEach(el => el.classList.remove('highlight'));
-      // Add to selected
       card.classList.add('highlight');
     }
 
-    function orderRedirect(plan, price) {
-      const members = document.getElementById('members') ? document.getElementById('members').value : 1;
-      const totalPrice = price * members;
-      window.location.href = `order.html?plan=${plan}&price=${totalPrice}&members=${members}`;
-    }
-
     function updateFamilyPrice() {
-      const members = document.getElementById('members').value;
+      const members = parseInt(document.getElementById('members').value);
+      if (members < 1 || isNaN(members)) {
+        document.getElementById('members').value = 1;
+      }
+
       const pricePerMember = 999;
       const totalPrice = members * pricePerMember;
       document.getElementById('family-price').innerText = `₹${totalPrice}/month`;
       document.getElementById('member-price-info').innerText = `Price: ₹${totalPrice} for ${members} member${members > 1 ? 's' : ''}`;
+
+      const familyBtn = document.getElementById('family-btn');
+      familyBtn.href = `order.html?plan=Family%20Plan&price=${totalPrice}&members=${members}`;
     }
   </script>
+
 </body>
 </html>
+
 
 
