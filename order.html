@@ -175,10 +175,10 @@
       <input type="text" id="name" name="name" required />
 
       <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="phone" required />
+      <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" title="Enter a valid 10-digit phone number" required />
 
       <label>Choose Your Fruits</label>
-      <div id="fruit-options">
+      <div id="fruit-options" title="Click to select fruits">
         <label><input type="checkbox" value="Apple"> Apple</label>
         <label><input type="checkbox" value="Banana"> Banana</label>
         <label><input type="checkbox" value="Orange"> Orange</label>
@@ -274,10 +274,11 @@
     }
 
     function orderGoogleForm() {
-      window.open("https://forms.gle/your-google-form-link", "_blank"); // Replace with actual form
+      window.open("https://forms.gle/your-google-form-link", "_blank"); // Replace with actual form link
       clearFormAndClose();
     }
   </script>
 </body>
 </html>
+
 
