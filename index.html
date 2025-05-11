@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,60 +5,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FruitBox Tezpur - Fresh Fruit Subscription</title>
   <style>
-    :root {
-      --dark-green: #0b3d2e;
-      --creamy-white: #f9f6ef;
-      --accent: #f2a154;
-      --text-dark: #1c1c1c;
-      --text-light: #ffffff;
-    }
-
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: var(--creamy-white);
-      color: var(--text-dark);
+      background: #eaf7e3;
+      color: #333;
     }
 
     header {
-      background: var(--dark-green);
-      color: var(--text-light);
-      padding: 50px 20px 30px;
+      background: linear-gradient(to right, #66bb6a, #388e3c);
+      color: white;
+      padding: 40px 20px 20px;
       text-align: center;
+      position: relative;
     }
 
     header h1 {
       font-size: 3em;
-      margin: 0;
+      margin-bottom: 10px;
     }
 
     header p {
-      font-size: 1.3em;
-      margin-top: 10px;
+      font-size: 1.2em;
+      margin-top: 0;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: cover;
+      display: block;
+      margin-top: 20px;
+      border-radius: 0 0 10px 10px;
+      border-bottom: 5px solid #66bb6a;
     }
 
     nav {
-      background: var(--accent);
+      background: #2e7d32;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 14px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      padding: 12px 20px;
     }
 
-    nav a {
+    .nav-left a,
+    .nav-right a {
       color: white;
       text-decoration: none;
       font-weight: bold;
-      margin: 0 12px;
-      transition: color 0.3s ease;
+      font-size: 1.1em;
+      margin: 0 10px;
     }
 
-    nav a:hover {
-      color: var(--dark-green);
+    .nav-left a:hover,
+    .nav-right a:hover {
+      text-decoration: underline;
+    }
+
+    .cta-nav {
+      background: #66bb6a;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    .cta-nav:hover {
+      background: #388e3c;
     }
 
     .container {
@@ -67,10 +80,10 @@
     }
 
     .section-title {
-      font-size: 2.2em;
+      font-size: 2em;
       text-align: center;
-      color: var(--dark-green);
-      margin-bottom: 20px;
+      color: #388e3c;
+      margin-bottom: 30px;
     }
 
     ul {
@@ -81,69 +94,70 @@
     }
 
     li {
-      margin: 10px 0;
+      margin: 12px 0;
     }
 
-    section {
-      margin-bottom: 40px;
+    section#contact {
+      text-align: center;
+    }
+
+    section#contact a {
+      color: #66bb6a;
+      font-weight: bold;
     }
 
     footer {
-      background: var(--dark-green);
-      color: var(--text-light);
+      background: #2e7d32;
+      color: white;
       text-align: center;
       padding: 20px 0;
-      font-size: 1em;
+      margin-top: 50px;
+      font-size: 1.1em;
     }
 
     footer p {
       margin: 0;
     }
 
-    .scroll-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: var(--accent);
-      color: white;
-      padding: 10px 15px;
-      border-radius: 50%;
-      font-size: 18px;
-      cursor: pointer;
-      display: none;
-      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
-    }
-
-    .highlight {
-      background-color: var(--accent);
-      color: white;
-      padding: 12px;
-      border-radius: 10px;
-      max-width: 700px;
-      margin: 10px auto;
-      text-align: center;
+    /* Hover and button animation */
+    .cta-nav:hover {
+      transform: scale(1.1);
     }
   </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const ctaButton = document.querySelector('.cta-nav');
+      ctaButton.addEventListener('mouseover', () => {
+        ctaButton.style.transform = 'scale(1.1)';
+      });
+      ctaButton.addEventListener('mouseout', () => {
+        ctaButton.style.transform = 'scale(1)';
+      });
+    });
+  </script>
 </head>
 <body>
 
   <header>
     <h1>FruitBox Tezpur</h1>
-    <p>Fresh Fruits Delivered Daily | Eat Fresh. Live Well.</p>
+    <p>Fresh Fruits Delivered Daily | Healthy Living Made Easy</p>
+    <div class="hero-image">
+      <img src="banner.jpg" alt="Fresh Fruits Banner" />
+    </div>
   </header>
 
   <nav>
-    <div><a href="#about">About</a><a href="#plans">Plans</a><a href="#benefits">Benefits</a></div>
-    <div><a href="#contact">Order</a></div>
+    <div class="nav-left">
+      <a href="#plans">Plans</a>
+      <a href="fruit-benefits.html">Fruit Benefits</a>
+    </div>
+    <div class="nav-right">
+      <a href="order.html" class="cta-nav">Order Now</a>
+    </div>
   </nav>
 
   <div class="container">
-
-    <section id="about">
-      <h2 class="section-title">About Us</h2>
-      <p class="highlight">FruitBox Tezpur is a fresh fruit subscription service delivering hand-picked seasonal fruits daily to your doorstep or hostel room. Our mission is to make healthy eating simple, affordable, and consistent for students, families, and health-conscious individuals in Tezpur.</p>
-    </section>
-
     <section id="plans">
       <h2 class="section-title">Our Subscription Plans</h2>
       <ul>
@@ -153,42 +167,18 @@
       </ul>
     </section>
 
-    <section id="benefits">
-      <h2 class="section-title">Why Choose FruitBox?</h2>
-      <ul>
-        <li>✅ 100% Fresh & Seasonal Fruits</li>
-        <li>✅ Convenient Hostel & Home Delivery</li>
-        <li>✅ Affordable and Customizable Plans</li>
-        <li>✅ Boost Your Immunity and Overall Health</li>
-        <li>✅ No More Skipping Fruits in Your Diet!</li>
-      </ul>
-    </section>
-
     <section id="contact">
       <h2 class="section-title">Order Now</h2>
-      <p class="highlight">📞 Call or WhatsApp us at <strong>+91 9395345418</strong><br>
-         📝 Or fill out our <a href="https://forms.gle/your-google-form-link" target="_blank">Google Form</a> to start your subscription.</p>
+      <p>📞 Call or WhatsApp us at <strong>+91 9395345418</strong></p>
+      <p>📝 Or fill our <a href="https://forms.gle/your-google-form-link" target="_blank">Google Form</a> to start your subscription.</p>
     </section>
-
   </div>
 
   <footer>
-    <p>&copy; 2025 FruitBox Tezpur. Designed with care and health in mind.</p>
+    <p>&copy; 2025 FruitBox Tezpur. Eat Fresh. Live Well.</p>
   </footer>
-
-  <div class="scroll-top" onclick="scrollToTop()">↑</div>
-
-  <script>
-    const scrollBtn = document.querySelector('.scroll-top');
-    window.addEventListener('scroll', () => {
-      scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
-    });
-
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
 
 </body>
 </html>
+
 
