@@ -137,7 +137,6 @@
       color: #2f4f2f;
     }
 
-    /* Toast */
     #toast {
       display: none;
       position: fixed;
@@ -149,6 +148,18 @@
       border-radius: 8px;
       font-size: 1em;
       z-index: 1000;
+    }
+
+    #plan-image-container {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    #plan-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
     @media (max-width: 600px) {
@@ -175,10 +186,10 @@
       <input type="text" id="name" name="name" required />
 
       <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" title="Enter a valid 10-digit phone number" required />
+      <input type="tel" id="phone" name="phone" required />
 
       <label>Choose Your Fruits</label>
-      <div id="fruit-options" title="Click to select fruits">
+      <div id="fruit-options">
         <label><input type="checkbox" value="Apple"> Apple</label>
         <label><input type="checkbox" value="Banana"> Banana</label>
         <label><input type="checkbox" value="Orange"> Orange</label>
@@ -190,11 +201,15 @@
       </div>
 
       <label for="plan">Select Plan</label>
-      <select id="plan" name="plan" required>
+      <select id="plan" name="plan" required onchange="updateTotal()">
         <option value="Daily">Daily</option>
         <option value="Weekly">Weekly</option>
         <option value="Monthly">Monthly</option>
       </select>
+
+      <div id="plan-image-container">
+        <img id="plan-image" src="daily.jpg" alt="Plan Image">
+      </div>
 
       <label for="shake">Select Shake</label>
       <select id="shake" name="shake">
@@ -207,13 +222,14 @@
       <label for="address">Delivery Address</label>
       <textarea id="address" name="address" rows="3" required></textarea>
 
+      <label>Total Price: ₹<span id="total-price">49</span></label>
+
       <div style="text-align: center;">
         <button type="button" class="cta-button" onclick="showOptions()">Place Order</button>
       </div>
     </form>
   </div>
 
-  <!-- Modal -->
   <div id="orderOptions" class="modal">
     <div class="modal-content">
       <h3>Choose How You Want to Order</h3>
@@ -224,10 +240,40 @@
     </div>
   </div>
 
-  <!-- Toast -->
   <div id="toast">Order initiated!</div>
 
   <script>
+    document.querySelectorAll('#fruit-options input').forEach(input => {
+      input.addEventListener('change', updateTotal);
+    });
+
+    function getBasePrice(plan) {
+      switch(plan) {
+        case 'Weekly': return 299;
+        case 'Monthly': return 1199;
+        default: return 49;
+      }
+    }
+
+    function getSelectedFruits() {
+      return Array.from(document.querySelectorAll('#fruit-options input:checked'))
+        .map(input => input.value);
+    }
+
+    function updateTotal() {
+      const plan = document.getElementById("plan").value;
+      const basePrice = getBasePrice(plan);
+      const selectedFruits = getSelectedFruits();
+      const extraFruits = Math.max(0, selectedFruits.length - 1);
+      const fruitExtraCost = extraFruits * 20;
+      const total = basePrice + fruitExtraCost;
+      document.getElementById("total-price").textContent = total;
+
+      const planImage = document.getElementById("plan-image");
+      planImage.src = plan.toLowerCase() + ".jpg";
+      return total;
+    }
+
     function showOptions() {
       const form = document.getElementById('orderForm');
       if (form.checkValidity()) {
@@ -241,22 +287,17 @@
       document.getElementById('orderOptions').style.display = 'none';
     }
 
-    function getSelectedFruits() {
-      return Array.from(document.querySelectorAll('#fruit-options input:checked'))
-        .map(input => input.value)
-        .join(", ");
-    }
-
-    function clearFormAndClose() {
-      document.getElementById("orderForm").reset();
-      closeModal();
-      showToast();
-    }
-
     function showToast() {
       const toast = document.getElementById("toast");
       toast.style.display = "block";
       setTimeout(() => toast.style.display = "none", 3000);
+    }
+
+    function clearFormAndClose() {
+      document.getElementById("orderForm").reset();
+      updateTotal();
+      closeModal();
+      showToast();
     }
 
     function orderWhatsApp() {
@@ -265,20 +306,25 @@
       const address = document.getElementById("address").value;
       const plan = document.getElementById("plan").value;
       const shake = document.getElementById("shake").value;
-      const fruits = getSelectedFruits();
+      const fruits = getSelectedFruits().join(", ");
+      const total = updateTotal();
 
-      const message = `Hello FruitBox Tezpur! 🍉\n\nI'd like to place an order:\n\nName: ${name}\nPhone: ${phone}\nFruits: ${fruits}\nPlan: ${plan}\nShake: ${shake}\nAddress: ${address}`;
+      const message = `Hello FruitBox Tezpur! 🍉\n\nI'd like to place an order:\n\nName: ${name}\nPhone: ${phone}\nPlan: ${plan}\nFruits: ${fruits}\nShake: ${shake}\nAddress: ${address}\n\nTotal Price: ₹${total}`;
+
       const whatsappURL = `https://wa.me/919395345418?text=${encodeURIComponent(message)}`;
       window.open(whatsappURL, '_blank');
       clearFormAndClose();
     }
 
     function orderGoogleForm() {
-      window.open("https://forms.gle/your-google-form-link", "_blank"); // Replace with actual form link
+      window.open("https://forms.gle/your-google-form-link", "_blank");
       clearFormAndClose();
     }
+
+    window.onload = updateTotal;
   </script>
 </body>
 </html>
+
 
 
