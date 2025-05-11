@@ -9,12 +9,12 @@
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background: #eaf7e3;
+      background: #f5f5e5; /* Creamy white */
       color: #333;
     }
 
     header {
-      background: linear-gradient(to right, #66bb6a, #388e3c);
+      background: linear-gradient(to right, #004d00, #006400); /* Darkest green */
       color: white;
       padding: 40px 20px 20px;
       text-align: center;
@@ -39,11 +39,11 @@
       display: block;
       margin-top: 20px;
       border-radius: 0 0 10px 10px;
-      border-bottom: 5px solid #66bb6a;
+      border-bottom: 5px solid #004d00; /* Dark green */
     }
 
     nav {
-      background: #2e7d32;
+      background: #003300; /* Dark green */
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -65,14 +65,14 @@
     }
 
     .cta-nav {
-      background: #66bb6a;
+      background: #66bb6a; /* Lighter green */
       padding: 8px 14px;
       border-radius: 6px;
       transition: background 0.3s ease;
     }
 
     .cta-nav:hover {
-      background: #388e3c;
+      background: #388e3c; /* Darker green */
     }
 
     .container {
@@ -82,7 +82,7 @@
     .section-title {
       font-size: 2em;
       text-align: center;
-      color: #388e3c;
+      color: #004d00; /* Dark green */
       margin-bottom: 30px;
     }
 
@@ -102,12 +102,12 @@
     }
 
     section#contact a {
-      color: #66bb6a;
+      color: #66bb6a; /* Lighter green */
       font-weight: bold;
     }
 
     footer {
-      background: #2e7d32;
+      background: #003300; /* Dark green */
       color: white;
       text-align: center;
       padding: 20px 0;
@@ -122,6 +122,34 @@
     /* Hover and button animation */
     .cta-nav:hover {
       transform: scale(1.1);
+    }
+
+    /* Content sections */
+    .why-choose-us, .fruit-benefits, .our-values {
+      background: #e8f5e9; /* Light green */
+      padding: 40px 20px;
+      margin: 30px 0;
+      border-radius: 10px;
+    }
+
+    .why-choose-us h2, .fruit-benefits h2, .our-values h2 {
+      color: #004d00;
+      margin-bottom: 20px;
+    }
+
+    .why-choose-us ul, .fruit-benefits ul {
+      list-style: none;
+      padding: 0;
+      font-size: 1.2em;
+      text-align: left;
+    }
+
+    .why-choose-us li, .fruit-benefits li {
+      margin: 12px 0;
+    }
+
+    .benefit-icon {
+      margin-right: 10px;
     }
   </style>
 
@@ -158,6 +186,39 @@
   </nav>
 
   <div class="container">
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
+      <h2 class="section-title">Why Choose Us?</h2>
+      <ul>
+        <li><span class="benefit-icon">✅</span><strong>Premium Freshness:</strong> We deliver only the freshest seasonal fruits to your doorstep.</li>
+        <li><span class="benefit-icon">✅</span><strong>Health Focused:</strong> Eating fresh fruits daily promotes overall well-being and immunity.</li>
+        <li><span class="benefit-icon">✅</span><strong>Convenient Subscription:</strong> Choose from daily, weekly, or monthly plans, and we'll take care of the rest.</li>
+        <li><span class="benefit-icon">✅</span><strong>Locally Sourced:</strong> Our fruits are sourced directly from trusted local farmers.</li>
+      </ul>
+    </section>
+
+    <!-- Fruit Benefits Section -->
+    <section class="fruit-benefits">
+      <h2 class="section-title">Benefits of Eating Fresh Fruits</h2>
+      <ul>
+        <li><span class="benefit-icon">🍏</span><strong>Rich in Nutrients:</strong> Fresh fruits are packed with vitamins and minerals necessary for a healthy lifestyle.</li>
+        <li><span class="benefit-icon">🍊</span><strong>Boosts Immunity:</strong> Regular consumption of fruits helps strengthen the immune system and prevents illness.</li>
+        <li><span class="benefit-icon">🍍</span><strong>Promotes Digestion:</strong> Fruits like papaya and pineapple are rich in enzymes that aid digestion.</li>
+        <li><span class="benefit-icon">🍓</span><strong>Good for Skin:</strong> Fresh fruits, such as berries and citrus, help keep your skin glowing and healthy.</li>
+      </ul>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="our-values">
+      <h2 class="section-title">Our Values</h2>
+      <ul>
+        <li><strong>Quality:</strong> We believe in delivering the best quality fruits with every order.</li>
+        <li><strong>Customer Satisfaction:</strong> Your happiness is our priority. We ensure timely delivery and superior service.</li>
+        <li><strong>Eco-Friendly:</strong> We use sustainable packaging to ensure we take care of the planet as much as we take care of you.</li>
+      </ul>
+    </section>
+
+    <!-- Subscription Plans Section -->
     <section id="plans">
       <h2 class="section-title">Our Subscription Plans</h2>
       <ul>
@@ -167,6 +228,7 @@
       </ul>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact">
       <h2 class="section-title">Order Now</h2>
       <p>📞 Call or WhatsApp us at <strong>+91 9395345418</strong></p>
@@ -180,5 +242,6 @@
 
 </body>
 </html>
+
 
 
