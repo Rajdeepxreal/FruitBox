@@ -126,7 +126,7 @@
           <li>Custom shake option</li>
           <li>Free doorstep delivery</li>
         </ul>
-        <button class="cta-button" onclick="orderRedirect()">Order Now</button>
+        <button class="cta-button" onclick="orderRedirect('Daily Plan', 49)">Order Now</button>
       </div>
 
       <div class="plan-card highlight" onclick="highlight(this)">
@@ -138,7 +138,7 @@
           <li>Flexible delivery time</li>
           <li>Save ₹44!</li>
         </ul>
-        <button class="cta-button" onclick="orderRedirect()">Order Now</button>
+        <button class="cta-button" onclick="orderRedirect('Weekly Plan', 299)">Order Now</button>
       </div>
 
       <div class="plan-card" onclick="highlight(this)">
@@ -150,8 +150,24 @@
           <li>Priority delivery</li>
           <li>Save ₹271!</li>
         </ul>
-        <button class="cta-button" onclick="orderRedirect()">Order Now</button>
+        <button class="cta-button" onclick="orderRedirect('Monthly Plan', 1199)">Order Now</button>
       </div>
+
+      <!-- Family Plan -->
+      <div class="plan-card" onclick="highlight(this)">
+        <h2 class="plan-title">Family Plan</h2>
+        <p class="plan-price" id="family-price">₹999/month</p>
+        <ul class="plan-features">
+          <li>Customized for family members</li>
+          <li>Fruit box for each member</li>
+          <li>Free delivery for the family</li>
+        </ul>
+        <label for="members">Select Number of Members:</label>
+        <input type="number" id="members" name="members" min="1" value="1" onchange="updateFamilyPrice()">
+        <p id="member-price-info">Price: ₹999 for 1 member</p>
+        <button class="cta-button" onclick="orderRedirect('Family Plan', 999)">Order Now</button>
+      </div>
+
     </div>
   </div>
 
@@ -163,10 +179,21 @@
       card.classList.add('highlight');
     }
 
-    function orderRedirect() {
-      window.location.href = "order.html"; // Replace with actual order page URL if needed
+    function orderRedirect(plan, price) {
+      const members = document.getElementById('members') ? document.getElementById('members').value : 1;
+      const totalPrice = price * members;
+      window.location.href = `order.html?plan=${plan}&price=${totalPrice}&members=${members}`;
+    }
+
+    function updateFamilyPrice() {
+      const members = document.getElementById('members').value;
+      const pricePerMember = 999;
+      const totalPrice = members * pricePerMember;
+      document.getElementById('family-price').innerText = `₹${totalPrice}/month`;
+      document.getElementById('member-price-info').innerText = `Price: ₹${totalPrice} for ${members} member${members > 1 ? 's' : ''}`;
     }
   </script>
 </body>
 </html>
+
 
