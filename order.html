@@ -7,14 +7,14 @@
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      background: #f9f3d2; /* Creamy yellow background */
+      background: #f9f3d2;
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
     header {
-      background: #2f4f2f; /* Dark green background */
+      background: #2f4f2f;
       color: #fff;
       padding: 40px 0;
       text-align: center;
@@ -43,7 +43,7 @@
 
     .section-title {
       font-size: 2em;
-      color: #2f4f2f; /* Dark green */
+      color: #2f4f2f;
       margin-bottom: 20px;
       text-align: center;
       font-weight: 600;
@@ -51,7 +51,6 @@
     }
 
     form {
-      background: #fff;
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -64,19 +63,35 @@
       color: #2f4f2f;
     }
 
-    input, select, textarea {
+    input[type="text"],
+    input[type="tel"],
+    select,
+    textarea {
       width: 100%;
       padding: 12px;
       margin-top: 8px;
       border: 1px solid #ccc;
       border-radius: 8px;
       font-size: 1em;
-      transition: border-color 0.3s ease;
     }
 
     input:focus, select:focus, textarea:focus {
       border-color: #2f4f2f;
       outline: none;
+    }
+
+    #fruit-options label {
+      display: inline-block;
+      margin-right: 10px;
+      margin-top: 10px;
+      background: #f0f0f0;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #fruit-options input {
+      margin-right: 5px;
     }
 
     .cta-button {
@@ -88,24 +103,10 @@
       border-radius: 8px;
       cursor: pointer;
       margin-top: 25px;
-      transition: background-color 0.3s ease;
     }
 
     .cta-button:hover {
-      background-color: #1a3b1a; /* Darker green on hover */
-    }
-
-    .cta-button:active {
-      background-color: #123612; /* Even darker green */
-    }
-
-    .cta-button:disabled {
-      background-color: #a2a2a2;
-      cursor: not-allowed;
-    }
-
-    .cta-button:focus {
-      outline: none;
+      background-color: #1a3b1a;
     }
 
     .modal {
@@ -118,24 +119,16 @@
       height: 100%;
       overflow: auto;
       background-color: rgba(0, 0, 0, 0.4);
-      animation: fadeInModal 0.5s ease-in-out;
     }
 
     .modal-content {
       background-color: #fff;
       margin: 10% auto;
       padding: 30px;
-      border: 1px solid #888;
       border-radius: 12px;
       width: 80%;
       max-width: 450px;
       text-align: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .modal-content button {
-      margin: 10px 0;
-      font-size: 1em;
     }
 
     .modal-content h3 {
@@ -144,48 +137,28 @@
       color: #2f4f2f;
     }
 
+    /* Toast */
+    #toast {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #2f4f2f;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 1em;
+      z-index: 1000;
+    }
+
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 2.2em;
-      }
-
-      .section-title {
-        font-size: 1.7em;
-      }
-
-      .cta-button {
-        font-size: 1em;
-        padding: 10px 20px;
-      }
+      header h1 { font-size: 2.2em; }
+      .section-title { font-size: 1.7em; }
+      .cta-button { font-size: 1em; padding: 10px 20px; }
     }
 
-    /* Animations */
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-
-    @keyframes slideIn {
-      0% {
-        transform: translateX(-100%);
-      }
-      100% {
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes fadeInModal {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
+    @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+    @keyframes slideIn { 0% { transform: translateX(-100%); } 100% { transform: translateX(0); } }
   </style>
 </head>
 <body>
@@ -204,20 +177,20 @@
       <label for="phone">Phone Number</label>
       <input type="tel" id="phone" name="phone" required />
 
-      <label for="fruits">Choose Your Fruits (multiple)</label>
-      <select id="fruits" name="fruits" multiple>
-        <option value="Apple">Apple</option>
-        <option value="Banana">Banana</option>
-        <option value="Orange">Orange</option>
-        <option value="Mango">Mango</option>
-        <option value="Grapes">Grapes</option>
-        <option value="Watermelon">Watermelon</option>
-        <option value="Guava">Guava</option>
-        <option value="Pineapple">Pineapple</option>
-      </select>
+      <label>Choose Your Fruits</label>
+      <div id="fruit-options">
+        <label><input type="checkbox" value="Apple"> Apple</label>
+        <label><input type="checkbox" value="Banana"> Banana</label>
+        <label><input type="checkbox" value="Orange"> Orange</label>
+        <label><input type="checkbox" value="Mango"> Mango</label>
+        <label><input type="checkbox" value="Grapes"> Grapes</label>
+        <label><input type="checkbox" value="Watermelon"> Watermelon</label>
+        <label><input type="checkbox" value="Guava"> Guava</label>
+        <label><input type="checkbox" value="Pineapple"> Pineapple</label>
+      </div>
 
       <label for="plan">Select Plan</label>
-      <select id="plan" name="plan">
+      <select id="plan" name="plan" required>
         <option value="Daily">Daily</option>
         <option value="Weekly">Weekly</option>
         <option value="Monthly">Monthly</option>
@@ -251,13 +224,39 @@
     </div>
   </div>
 
+  <!-- Toast -->
+  <div id="toast">Order initiated!</div>
+
   <script>
     function showOptions() {
-      document.getElementById('orderOptions').style.display = 'block';
+      const form = document.getElementById('orderForm');
+      if (form.checkValidity()) {
+        document.getElementById('orderOptions').style.display = 'block';
+      } else {
+        form.reportValidity();
+      }
     }
 
     function closeModal() {
       document.getElementById('orderOptions').style.display = 'none';
+    }
+
+    function getSelectedFruits() {
+      return Array.from(document.querySelectorAll('#fruit-options input:checked'))
+        .map(input => input.value)
+        .join(", ");
+    }
+
+    function clearFormAndClose() {
+      document.getElementById("orderForm").reset();
+      closeModal();
+      showToast();
+    }
+
+    function showToast() {
+      const toast = document.getElementById("toast");
+      toast.style.display = "block";
+      setTimeout(() => toast.style.display = "none", 3000);
     }
 
     function orderWhatsApp() {
@@ -266,19 +265,19 @@
       const address = document.getElementById("address").value;
       const plan = document.getElementById("plan").value;
       const shake = document.getElementById("shake").value;
-
-      const fruits = Array.from(document.getElementById("fruits").selectedOptions)
-        .map(option => option.value)
-        .join(", ");
+      const fruits = getSelectedFruits();
 
       const message = `Hello FruitBox Tezpur! 🍉\n\nI'd like to place an order:\n\nName: ${name}\nPhone: ${phone}\nFruits: ${fruits}\nPlan: ${plan}\nShake: ${shake}\nAddress: ${address}`;
       const whatsappURL = `https://wa.me/919395345418?text=${encodeURIComponent(message)}`;
       window.open(whatsappURL, '_blank');
+      clearFormAndClose();
     }
 
     function orderGoogleForm() {
       window.open("https://forms.gle/your-google-form-link", "_blank"); // Replace with actual form
+      clearFormAndClose();
     }
   </script>
 </body>
 </html>
+
