@@ -282,22 +282,24 @@
     }
 
     function orderWhatsApp() {
-      const name = document.getElementById('name').value;
-      const phone = document.getElementById('phone').value;
-      const fruits = getSelectedFruits().join(', ');
-      const plan = document.getElementById('plan').value;
-      const shake = document.getElementById('shake').value;
-      const address = document.getElementById('address').value;
-      const totalPrice = document.getElementById('total-price').textContent;
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+  const fruits = getSelectedFruits().join(', ');
+  const plan = document.getElementById('plan').value;
+  const shake = document.getElementById('shake').value;
+  const address = document.getElementById('address').value;
+  const totalPrice = document.getElementById('total-price').textContent;
 
-      const message = `Order Details:\nName: ${name}\nPhone: ${phone}\nFruits: ${fruits}\nPlan: ${plan}\nShake: ${shake}\nAddress: ${address}\nTotal Price: ₹${totalPrice}`;
+  // Adding the greeting message
+  const message = `Hello FruitBox Tezpur! I would like to place an order:\n\nName: ${name}\nPhone: ${phone}\nFruits: ${fruits}\nPlan: ${plan}\nShake: ${shake}\nAddress: ${address}\nTotal Price: ₹${totalPrice}`;
 
-      const url = `https://wa.me/919395345418?text=${encodeURIComponent(message)}`;
-      window.open(url, '_blank');
+  const url = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
 
-      closeModal();
-      showToast();
-    }
+  closeModal();
+  showToast();
+}
+
 
     function orderGoogleForm() {
       window.location.href = 'https://forms.gle/YOUR_GOOGLE_FORM_URL';
