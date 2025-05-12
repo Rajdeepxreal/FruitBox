@@ -222,7 +222,7 @@
       <label for="address">Delivery Address</label>
       <textarea id="address" rows="3" required></textarea>
 
-      <label>Total Price: ₹<span id="total-price">49</span></label>
+      <label>Total Price: ₹<span id="total-price">59</span></label>
 
       <div style="text-align: center;">
         <button type="button" class="cta-button" onclick="showOptions()">Place Order</button>
@@ -251,7 +251,7 @@
       switch(plan) {
         case 'Weekly': return 299;
         case 'Monthly': return 1199;
-        default: return 49;
+        default: return 59;
       }
     }
 
@@ -270,7 +270,7 @@
       });
 
       document.getElementById('total-price').textContent = totalPrice;
-      document.getElementById('plan-image').src = plan === 'Daily' ? 'daily.jpg' : (plan === 'Weekly' ? 'weekly.jpg' : 'monthly.jpg');
+      document.getElementById('plan-image').src = plan === 'Daily' ? 'dailyy.jpg' : (plan === 'Weekly' ? 'weekly.jpg' : 'monthly.jpg');
     }
 
     function showOptions() {
@@ -292,7 +292,7 @@
 
       const message = `Order Details:\nName: ${name}\nPhone: ${phone}\nFruits: ${fruits}\nPlan: ${plan}\nShake: ${shake}\nAddress: ${address}\nTotal Price: ₹${totalPrice}`;
 
-      const url = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
+      const url = `https://wa.me/919395345418?text=${encodeURIComponent(message)}`;
       window.open(url, '_blank');
 
       closeModal();
