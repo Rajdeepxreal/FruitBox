@@ -5,12 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FruitBox Tezpur - Fresh Fruit Subscription</title>
   <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
       background: #f5f5e5;
       color: #333;
+      overflow-x: hidden;
     }
 
     header {
@@ -19,16 +25,19 @@
       padding: 40px 20px 20px;
       text-align: center;
       position: relative;
+      animation: fadeIn 1s ease-in-out;
     }
 
     header h1 {
       font-size: 3em;
       margin-bottom: 10px;
+      animation: slideDown 1s ease-out;
     }
 
     header p {
       font-size: 1.2em;
       margin-top: 0;
+      animation: slideUp 1s ease-out;
     }
 
     .hero-image img {
@@ -40,6 +49,11 @@
       margin-top: 20px;
       border-radius: 0 0 10px 10px;
       border-bottom: 5px solid #004d00;
+      transition: transform 0.6s ease;
+    }
+
+    .hero-image img:hover {
+      transform: scale(1.03);
     }
 
     nav {
@@ -47,6 +61,10 @@
       padding: 12px 20px;
       display: flex;
       justify-content: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
 
     .nav-container {
@@ -63,12 +81,27 @@
       font-size: 1.1em;
       padding: 8px 14px;
       border-radius: 6px;
+      position: relative;
+      overflow: hidden;
       transition: all 0.3s ease;
     }
 
-    .nav-container a:hover {
-      background-color: #004d00;
-      transform: scale(1.05);
+    .nav-container a::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: #66bb6a;
+      left: 0;
+      bottom: 0;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-container a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
     }
 
     .cta-nav {
@@ -89,6 +122,8 @@
       text-align: center;
       color: #004d00;
       margin-bottom: 30px;
+      position: relative;
+      animation: fadeInUp 1s ease-in-out;
     }
 
     ul {
@@ -100,6 +135,14 @@
 
     li {
       margin: 12px 0;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    section.reveal li {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     section#contact {
@@ -129,26 +172,39 @@
       padding: 40px 20px;
       margin: 30px 0;
       border-radius: 10px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease-out;
     }
 
-    .why-choose-us h2, .fruit-benefits h2, .our-values h2 {
-      color: #004d00;
-      margin-bottom: 20px;
-    }
-
-    .why-choose-us ul, .fruit-benefits ul {
-      list-style: none;
-      padding: 0;
-      font-size: 1.2em;
-      text-align: left;
-    }
-
-    .why-choose-us li, .fruit-benefits li {
-      margin: 12px 0;
+    .why-choose-us.reveal, .fruit-benefits.reveal, .our-values.reveal {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .benefit-icon {
       margin-right: 10px;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0 }
+      to { opacity: 1 }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0 }
+      to { transform: translateY(0); opacity: 1 }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0 }
+      to { transform: translateY(0); opacity: 1 }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -171,7 +227,6 @@
   </nav>
 
   <div class="container">
-    <!-- Why Choose Us Section -->
     <section class="why-choose-us">
       <h2 class="section-title">Why Choose Us?</h2>
       <ul>
@@ -182,7 +237,6 @@
       </ul>
     </section>
 
-    <!-- Fruit Benefits Section -->
     <section class="fruit-benefits">
       <h2 class="section-title">Benefits of Eating Fresh Fruits</h2>
       <ul>
@@ -193,7 +247,6 @@
       </ul>
     </section>
 
-    <!-- Our Values Section -->
     <section class="our-values">
       <h2 class="section-title">Our Values</h2>
       <ul>
@@ -203,7 +256,6 @@
       </ul>
     </section>
 
-    <!-- Subscription Plans Section -->
     <section id="plans">
       <h2 class="section-title">Our Subscription Plans</h2>
       <ul>
@@ -213,7 +265,6 @@
       </ul>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact">
       <h2 class="section-title">Order Now</h2>
       <p>📞 Call or WhatsApp us at <strong>+91 9395345418</strong></p>
@@ -225,6 +276,18 @@
     <p>&copy; 2025 FruitBox Tezpur. Eat Fresh. Live Well.</p>
   </footer>
 
+  <script>
+    const revealSections = document.querySelectorAll('.why-choose-us, .fruit-benefits, .our-values, section#plans ul, section#contact');
+
+    window.addEventListener('scroll', () => {
+      revealSections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        const trigger = window.innerHeight * 0.85;
+        if (top < trigger) {
+          section.classList.add('reveal');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
-
