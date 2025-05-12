@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -172,7 +173,7 @@
     @keyframes slideIn { 0% { transform: translateX(-100%); } 100% { transform: translateX(0); } }
   </style>
 </head>
-<body>
+<body onload="updateTotal()">
   <header>
     <h1>FruitBox Tezpur</h1>
     <p>Customize Your Order</p>
@@ -186,7 +187,7 @@
       <input type="text" id="name" required />
 
       <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" required />
+      <input type="tel" id="phone" required pattern="[0-9]{10}" title="Enter 10-digit phone number"/>
 
       <label>Choose Your Fruits</label>
       <div id="fruit-options">
@@ -265,8 +266,8 @@
       const selectedFruits = getSelectedFruits();
       let totalPrice = getBasePrice(plan);
 
-      selectedFruits.forEach(fruit => {
-        totalPrice += 10; // assuming 10 per fruit
+      selectedFruits.forEach(() => {
+        totalPrice += 10;
       });
 
       document.getElementById('total-price').textContent = totalPrice;
@@ -274,6 +275,15 @@
     }
 
     function showOptions() {
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const address = document.getElementById('address').value.trim();
+
+      if (!name || !phone || !address) {
+        alert("Please fill in all required fields before placing your order.");
+        return;
+      }
+
       document.getElementById('orderOptions').style.display = 'block';
     }
 
@@ -282,24 +292,21 @@
     }
 
     function orderWhatsApp() {
-  const name = document.getElementById('name').value;
-  const phone = document.getElementById('phone').value;
-  const fruits = getSelectedFruits().join(', ');
-  const plan = document.getElementById('plan').value;
-  const shake = document.getElementById('shake').value;
-  const address = document.getElementById('address').value;
-  const totalPrice = document.getElementById('total-price').textContent;
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const fruits = getSelectedFruits().join(', ');
+      const plan = document.getElementById('plan').value;
+      const shake = document.getElementById('shake').value;
+      const address = document.getElementById('address').value;
+      const totalPrice = document.getElementById('total-price').textContent;
 
-  // Adding the greeting message
-  const message = `Hello FruitBox Tezpur! I would like to place an order:\n\nName: ${name}\nPhone: ${phone}\nFruits: ${fruits}\nPlan: ${plan}\nShake: ${shake}\nAddress: ${address}\nTotal Price: ₹${totalPrice}`;
+      const message = `Hello FruitBox Tezpur! I would like to place an order:\n\nName: ${name}\nPhone: ${phone}\nFruits: ${fruits}\nPlan: ${plan}\nShake: ${shake}\nAddress: ${address}\nTotal Price: ₹${totalPrice}`;
+      const url = `https://wa.me/919395345418?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
 
-  const url = `https://wa.me/919395345418?text=${encodeURIComponent(message)}`;
-  window.open(url, '_blank');
-
-  closeModal();
-  showToast();
-}
-
+      closeModal();
+      showToast();
+    }
 
     function orderGoogleForm() {
       window.location.href = 'https://forms.gle/YOUR_GOOGLE_FORM_URL';
@@ -314,4 +321,5 @@
   </script>
 </body>
 </html>
+
 
