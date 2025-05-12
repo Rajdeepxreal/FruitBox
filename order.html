@@ -261,62 +261,55 @@
     }
 
     function updateTotal() {
-      const plan = document.getElementById("plan").value;
-      const basePrice = getBasePrice(plan);
-      const fruits = getSelectedFruits();
-      const fruitCost = fruits.length * 10;
-      const total = basePrice + fruitCost;
+      const plan = document.getElementById('plan').value;
+      const selectedFruits = getSelectedFruits();
+      let totalPrice = getBasePrice(plan);
 
-      document.getElementById("total-price").textContent = total;
-      updatePlanImage();
-    }
+      selectedFruits.forEach(fruit => {
+        totalPrice += 10; // assuming 10 per fruit
+      });
 
-    function updatePlanImage() {
-      const plan = document.getElementById("plan").value;
-      const img = document.getElementById("plan-image");
-
-      if (plan === "Daily") img.src = "dailyy.jpg";
-      else if (plan === "Weekly") img.src = "weekly.jpg";
-      else if (plan === "Monthly") img.src = "monthly.jpg";
-      else img.src = "dailyy.jpg";
+      document.getElementById('total-price').textContent = totalPrice;
+      document.getElementById('plan-image').src = plan === 'Daily' ? 'daily.jpg' : (plan === 'Weekly' ? 'weekly.jpg' : 'monthly.jpg');
     }
 
     function showOptions() {
-      document.getElementById("orderOptions").style.display = "block";
-      document.getElementById("toast").style.display = "block";
-      setTimeout(() => document.getElementById("toast").style.display = "none", 3000);
+      document.getElementById('orderOptions').style.display = 'block';
     }
 
     function closeModal() {
-      document.getElementById("orderOptions").style.display = "none";
+      document.getElementById('orderOptions').style.display = 'none';
     }
 
     function orderWhatsApp() {
-      const name = document.getElementById("name").value;
-      const phone = document.getElementById("phone").value;
-      const plan = document.getElementById("plan").value;
-      const shake = document.getElementById("shake").value;
-      const address = document.getElementById("address").value;
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
       const fruits = getSelectedFruits().join(', ');
-      const total = document.getElementById("total-price").textContent;
+      const plan = document.getElementById('plan').value;
+      const shake = document.getElementById('shake').value;
+      const address = document.getElementById('address').value;
+      const totalPrice = document.getElementById('total-price').textContent;
 
-      const message =
-        `Hello! I would like to place an order from FruitBox Tezpur.%0A` +
-        `Name: ${name}%0A` +
-        `Phone: ${phone}%0A` +
-        `Plan: ${plan}%0A` +
-        `Fruits: ${fruits}%0A` +
-        `Shake: ${shake}%0A` +
-        `Address: ${address}%0A` +
-        `Total Price: ₹${total}`;
+      const message = `Order Details:\nName: ${name}\nPhone: ${phone}\nFruits: ${fruits}\nPlan: ${plan}\nShake: ${shake}\nAddress: ${address}\nTotal Price: ₹${totalPrice}`;
 
-      const encoded = encodeURI(`https://wa.me/9395345418?text=${message}`);
-      window.open(encoded, '_blank');
+      const url = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+
+      closeModal();
+      showToast();
     }
 
     function orderGoogleForm() {
-      window.open("https://forms.gle/xyz123", '_blank');
+      window.location.href = 'https://forms.gle/YOUR_GOOGLE_FORM_URL';
+      closeModal();
+    }
+
+    function showToast() {
+      const toast = document.getElementById('toast');
+      toast.style.display = 'block';
+      setTimeout(() => toast.style.display = 'none', 3000);
     }
   </script>
 </body>
 </html>
+
