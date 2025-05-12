@@ -115,11 +115,6 @@
       border: 3px solid #4caf50;
     }
 
-    .family-plan-price {
-      margin-top: 10px;
-      font-weight: bold;
-    }
-
     @media (max-width: 768px) {
       header h1 {
         font-size: 2.5rem;
@@ -189,19 +184,6 @@
         <a href="order.html?plan=Monthly%20Plan&price=1199" class="cta-button">Order Now</a>
       </div>
 
-      <div class="plan-card" onclick="highlight(this)">
-        <h2 class="plan-title">Family Plan</h2>
-        <p class="plan-price" id="family-price">₹999/month</p>
-        <ul class="plan-features">
-          <li>Fruit box for each member</li>
-          <li>Free delivery for the family</li>
-        </ul>
-        <label for="members">Select Number of Members:</label>
-        <input type="number" id="members" name="members" min="1" value="1" onchange="updateFamilyPrice()">
-        <p id="member-price-info" class="family-plan-price">Price: ₹999 for 1 member</p>
-        <a href="order.html?plan=Family%20Plan&price=999&members=1" class="cta-button" id="family-btn">Order Now</a>
-      </div>
-
     </div>
   </div>
 
@@ -210,25 +192,7 @@
       document.querySelectorAll('.plan-card').forEach(el => el.classList.remove('highlight'));
       card.classList.add('highlight');
     }
-
-    function updateFamilyPrice() {
-      const members = parseInt(document.getElementById('members').value);
-      if (members < 1 || isNaN(members)) {
-        document.getElementById('members').value = 1;
-      }
-
-      const pricePerMember = 999;
-      const totalPrice = members * pricePerMember;
-      document.getElementById('family-price').innerText = `₹${totalPrice}/month`;
-      document.getElementById('member-price-info').innerText = `Price: ₹${totalPrice} for ${members} member${members > 1 ? 's' : ''}`;
-
-      const familyBtn = document.getElementById('family-btn');
-      familyBtn.href = `order.html?plan=Family%20Plan&price=${totalPrice}&members=${members}`;
-    }
   </script>
 
 </body>
 </html>
-
-
-
