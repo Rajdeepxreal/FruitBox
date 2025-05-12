@@ -183,10 +183,10 @@
 
     <form id="orderForm">
       <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" required />
+      <input type="text" id="name" required />
 
       <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="phone" required />
+      <input type="tel" id="phone" required />
 
       <label>Choose Your Fruits</label>
       <div id="fruit-options">
@@ -201,18 +201,18 @@
       </div>
 
       <label for="plan">Select Plan</label>
-      <select id="plan" name="plan" required onchange="updateTotal()">
+      <select id="plan" onchange="updateTotal()" required>
         <option value="Daily">Daily</option>
         <option value="Weekly">Weekly</option>
         <option value="Monthly">Monthly</option>
       </select>
 
       <div id="plan-image-container">
-        <img id="plan-image" src="order.jpg" alt="Plan Image">
+        <img id="plan-image" src="daily.jpg" alt="Plan Image">
       </div>
 
       <label for="shake">Select Shake</label>
-      <select id="shake" name="shake">
+      <select id="shake">
         <option value="None">None</option>
         <option value="Banana Shake">Banana Shake</option>
         <option value="Mango Shake">Mango Shake</option>
@@ -220,7 +220,7 @@
       </select>
 
       <label for="address">Delivery Address</label>
-      <textarea id="address" name="address" rows="3" required></textarea>
+      <textarea id="address" rows="3" required></textarea>
 
       <label>Total Price: ₹<span id="total-price">49</span></label>
 
@@ -263,10 +263,22 @@
     function updateTotal() {
       const plan = document.getElementById("plan").value;
       const basePrice = getBasePrice(plan);
-      const selectedFruits = getSelectedFruits();
-      const fruitCost = selectedFruits.length * 10;
-      const totalPrice = basePrice + fruitCost;
-      document.getElementById("total-price").textContent = totalPrice;
+      const fruits = getSelectedFruits();
+      const fruitCost = fruits.length * 10;
+      const total = basePrice + fruitCost;
+
+      document.getElementById("total-price").textContent = total;
+      updatePlanImage();
+    }
+
+    function updatePlanImage() {
+      const plan = document.getElementById("plan").value;
+      const img = document.getElementById("plan-image");
+
+      if (plan === "Daily") img.src = "daily.jpg";
+      else if (plan === "Weekly") img.src = "weekly.jpg";
+      else if (plan === "Monthly") img.src = "monthly.jpg";
+      else img.src = "order.jpg";
     }
 
     function showOptions() {
@@ -283,34 +295,28 @@
       const name = document.getElementById("name").value;
       const phone = document.getElementById("phone").value;
       const plan = document.getElementById("plan").value;
-      const fruits = getSelectedFruits().join(", ");
       const shake = document.getElementById("shake").value;
       const address = document.getElementById("address").value;
+      const fruits = getSelectedFruits().join(', ');
       const total = document.getElementById("total-price").textContent;
 
-      const message = `Hello! I would like to place an order from FruitBox Tezpur.\n` +
-                      `Name: ${name}\n` +
-                      `Phone: ${phone}\n` +
-                      `Plan: ${plan}\n` +
-                      `Fruits: ${fruits || "None"}\n` +
-                      `Shake: ${shake}\n` +
-                      `Address: ${address}\n` +
-                      `Total Price: ₹${total}`;
+      const message =
+        `Hello! I would like to place an order from FruitBox Tezpur.%0A` +
+        `Name: ${name}%0A` +
+        `Phone: ${phone}%0A` +
+        `Plan: ${plan}%0A` +
+        `Fruits: ${fruits}%0A` +
+        `Shake: ${shake}%0A` +
+        `Address: ${address}%0A` +
+        `Total Price: ₹${total}`;
 
-      const encodedMessage = encodeURIComponent(message);
-      const whatsappURL = `https://wa.me/9395345418?text=${encodedMessage}`;
-      window.open(whatsappURL, "_blank");
+      const encoded = encodeURI(`https://wa.me/9395345418?text=${message}`);
+      window.open(encoded, '_blank');
     }
 
     function orderGoogleForm() {
-      window.open("https://forms.gle/xyz123");
+      window.open("https://forms.gle/xyz123", '_blank');
     }
   </script>
 </body>
 </html>
-
-
-
-
-
-
