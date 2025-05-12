@@ -311,17 +311,19 @@
   </footer>
 
   <script>
-    // Add a smooth scrolling effect to anchor links
-    const anchorLinks = document.querySelectorAll('nav a');
-    anchorLinks.forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+  const anchorLinks = document.querySelectorAll('nav a');
+  anchorLinks.forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href.startsWith('#')) {
         e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
+        const targetId = href.substring(1);
         document.getElementById(targetId).scrollIntoView({
           behavior: 'smooth'
         });
-      });
+      }
+      // Don't block links like "index.html"
     });
-  </script>
-</body>
-</html>
+  });
+</script>
+
