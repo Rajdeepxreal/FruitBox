@@ -12,6 +12,7 @@
       margin: 0;
       padding: 0;
       color: #222;
+      scroll-behavior: smooth;
     }
 
     header {
@@ -19,6 +20,7 @@
       color: #fff;
       padding: 50px 0;
       text-align: center;
+      transition: background 0.3s ease;
     }
 
     header h1 {
@@ -36,6 +38,7 @@
       color: white;
       text-align: center;
       padding: 15px 0;
+      transition: background 0.3s ease;
     }
 
     nav a {
@@ -62,6 +65,7 @@
       text-align: center;
       color: #004d00;
       margin-bottom: 40px;
+      animation: fadeIn 2s ease-out;
     }
 
     .fruit-card {
@@ -72,12 +76,13 @@
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
       display: flex;
       align-items: center;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       flex-wrap: wrap;
     }
 
     .fruit-card:hover {
-      transform: scale(1.03);
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     }
 
     .fruit-card img {
@@ -113,10 +118,22 @@
       padding: 20px 0;
       margin-top: 50px;
       font-size: 1.1em;
+      transition: background 0.3s ease;
     }
 
     footer p {
       margin: 0;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @media (max-width: 600px) {
@@ -145,8 +162,6 @@
   <div class="container">
     <section id="fruits">
       <h2 class="section-title">Fruits & Health Benefits</h2>
-
-      <!-- All 14 fruits -->
 
       <!-- Apple -->
       <div class="fruit-card">
@@ -294,6 +309,19 @@
   <footer>
     <p>© 2025 FruitBox Tezpur | Designed by Rajdeep Borkakati</p>
   </footer>
+
+  <script>
+    // Add a smooth scrolling effect to anchor links
+    const anchorLinks = document.querySelectorAll('nav a');
+    anchorLinks.forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        document.getElementById(targetId).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </body>
 </html>
-
