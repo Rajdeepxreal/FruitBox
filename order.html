@@ -264,7 +264,7 @@
       const plan = document.getElementById("plan").value;
       const basePrice = getBasePrice(plan);
       const selectedFruits = getSelectedFruits();
-      const fruitCost = selectedFruits.length * 10;  // Assume each fruit adds ₹10
+      const fruitCost = selectedFruits.length * 10;  // ₹10 per fruit
 
       const totalPrice = basePrice + fruitCost;
       document.getElementById("total-price").textContent = totalPrice;
@@ -281,7 +281,25 @@
     }
 
     function orderWhatsApp() {
-      window.open("https://wa.me/9395345418?text=I%20want%20to%20order%20fruit%20plan");
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const plan = document.getElementById("plan").value;
+      const shake = document.getElementById("shake").value;
+      const address = document.getElementById("address").value;
+      const total = document.getElementById("total-price").textContent;
+      const fruits = getSelectedFruits().join(", ") || "None";
+
+      const message = `Hello! I would like to place an order from FruitBox Tezpur.%0A
+Name: ${name}%0A
+Phone: ${phone}%0A
+Plan: ${plan}%0A
+Fruits: ${fruits}%0A
+Shake: ${shake}%0A
+Address: ${address}%0A
+Total Price: ₹${total}`;
+
+      const url = `https://wa.me/9395345418?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
     }
 
     function orderGoogleForm() {
@@ -290,6 +308,7 @@
   </script>
 </body>
 </html>
+
 
 
 
